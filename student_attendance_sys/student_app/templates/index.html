@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-blue-500 p-4 flex justify-between items-center">
+      <h1 class="text-white text-2xl">Admin Dashboard</h1>
+      <button
+        onclick="switchToStudentDashboard()"
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Switch to Student Dashboard
+      </button>
+    </nav>
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="p-10">
+      <h1 class="text-center text-3xl mb-4">Admin Dashboard</h1>
+      <table class="table-auto w-full mb-4">
+        <thead>
+          <tr>
+            <th class="px-4 py-2">Student Name</th>
+            <th class="px-4 py-2">Date</th>
+            <th class="px-4 py-2">Status</th>
+            <th class="px-4 py-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="attendanceList"></tbody>
+      </table>
+    </div>
+    <!-- Add your JavaScript links here -->
+  </body>
+</html>

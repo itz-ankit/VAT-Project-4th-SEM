@@ -8,3 +8,10 @@ import os
 def test(request):
     return HttpResponse('testing the page')
 
+
+def index(request):
+    return render(request, 'index.html')
+
+def student(request):
+    return render(request, 'student.html')
+
