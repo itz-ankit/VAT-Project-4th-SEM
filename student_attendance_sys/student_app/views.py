@@ -63,7 +63,10 @@ def student_log(request):
 
 
 def student_dashboard(request):
-     return render(request , 'studentDashboard.html')
+     
+     u = Student_admin.objects.all()
+
+     return render(request , 'studentDashboard.html' , { 'x' : u })
 
 def faculty_log_page(request):
     return render(request , 'facultyLogin.html')
