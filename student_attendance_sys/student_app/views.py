@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from .models import *
 from django.urls import reverse
-from .forms import StudentForm
+from .forms import StudentCreateForm, StudentEditForm
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
@@ -31,12 +31,13 @@ def home(request):
 def user_signup(request):
     return render(request, 'student.html')
 
+
 @csrf_exempt
 def set_present(request):
     if request.method == 'POST':
         student_id = request.POST.get('studentId')
         student = Student.objects.get(id=student_id)
-        student.present = True
+        student.present = 'yes'
         student.save()
         return JsonResponse({'status': 'success'})
     else:
@@ -53,7 +54,6 @@ def student_signup(request):
     collegeId = request.POST.get('collegeId')
     password = request.POST.get('password')
     present = 'no'
-
 
     # try to get a student with the given collegeId
     student, created = Student.objects.get_or_create(
@@ -164,7 +164,7 @@ def view_student(request, id):
 
 def add(request):
     if request.method == 'POST':
-        form = StudentForm(request.POST)
+        form = StudentCreateForm(request.POST)
         if form.is_valid():
             new_studentName = form.cleaned_data['studentName']
             new_department = form.cleaned_data['department']
@@ -187,20 +187,20 @@ def add(request):
             )
             new_student.save()
             return render(request, 'add.html', {
-                'form': StudentForm(),
+                'form': StudentCreateForm(),
                 'success': True
             })
     else:
-        form = StudentForm()
+        form = StudentCreateForm()
     return render(request, 'add.html', {
-        'form': StudentForm()
+        'form': StudentCreateForm()
     })
 
 
 def edit(request, id):
     if request.method == 'POST':
         student = Student.objects.get(pk=id)
-        form = StudentForm(request.POST, instance=student)
+        form = StudentEditForm(request.POST, instance=student)
         if form.is_valid():
             form.save()
             return render(request, 'edit.html', {
@@ -209,7 +209,7 @@ def edit(request, id):
             })
     else:
         student = Student.objects.get(pk=id)
-        form = StudentForm(instance=student)
+        form = StudentEditForm(instance=student)
     return render(request, 'edit.html', {
         'form': form
     })
