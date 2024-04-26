@@ -16,23 +16,23 @@
               <thead>
                 <tr>
                   <th scope="col">Student Number</th>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
+                  <th scope="col">Student ID</th>
+                  <th scope="col">Student Name</th>
                   <th scope="col">Email</th>
                   <th scope="col">Field of Study</th>
-                  <th scope="col">GPA</th>
+                  <th scope="col">present</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {% for student in students %}
                   <tr>
-                    <td>{{ student.student_number }}</td>
-                    <td>{{ student.first_name }}</td>
-                    <td>{{ student.last_name }}</td>
-                    <td>{{ student.email }}</td>
-                    <td>{{ student.field_of_study }}</td>
-                    <td>{{ student.gpa }}</td>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.collegeId }}</td>
+                    <td>{{ student.studentName }}</td>
+                    <td>{{ student.emailId }}</td>
+                    <td>{{ student.department }}</td>
+                    <td>{{ student.present }}</td>
                     <td>
                       <button type="button" class="btn btn-success me-1" href="{% url 'view_student' student.id %}" data-bs-toggle="modal" data-bs-target="#myModal{{student.id}}">
                         <i class="fa-solid fa-circle-info fa-lg"></i>
@@ -52,12 +52,12 @@
                             </div>
                             <div class="modal-body">
                               <ul class="list-unstyled">
-                                <li>Student Number: <strong>{{ student.student_number }}</strong></li>
-                                <li>First Name: <strong>{{ student.first_name }}</strong></li>
-                                <li>Last Name: <strong>{{ student.last_name }}</strong></li>
+                                <li>Student Number: <strong>{{ student.id }}</strong></li>
+                                <li>Student ID: <strong>{{ student.collegeId }}</strong></li>
+                                <li>Student Name: <strong>{{ student.studentName }}</strong></li>
                                 <li>Email: <strong>{{ student.email }}</strong></li>
-                                <li>Field of Study: <strong>{{ student.field_of_study }}</strong></li>
-                                <li>GPA: <strong>{{ student.gpa }}</strong></li>
+                                <li>Field of Study: <strong>{{ student.department }}</strong></li>
+                                <li>present: <strong>{{ student.present }}</strong></li>
                               </ul>
                             </div>
                             <div class="modal-footer">

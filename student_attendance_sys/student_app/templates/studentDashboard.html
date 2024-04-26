@@ -29,28 +29,48 @@
         <table class="table-auto w-full mb-4">
             <tr>
                 <th class="px-4 py-2">Serial No</th>
-                <th class="px-4 py-2">First Name</th>
-                <th class="px-4 py-2">Last Name</th>
+                <th class="px-4 py-2">Student ID</th>
+                <th class="px-4 py-2">Student Name</th>
                 <th class="px-4 py-2">Email</th>
                 <th class="px-4 py-2">Your DEPT</th>
-                <th class="px-4 py-2">First Name</th>
-                <th class="px-4 py-2">GPA</th>
+                <th class="px-4 py-2">present</th>
             </tr>
-            {% for i in x %}
+            {% for student in students %}
             <tr>
-                <td>{{i.student_number}}</td>
-                <td>{{i.first_name}}</td>
-                <td>{{i.last_name}}</td>
-                <td>{{i.email}}</td>
-                <td>{{i.field_of_study}}</td>
-                <td>{{i.gpa}}</td>
+                <td>{{student.id}}</td>
+                <td>{{student.collegeId}}</td>
+                <td>{{student.studentName}}</td>
+                <td>{{student.emailId}}</td>
+                <td>{{student.department}}</td>
+                <td>{{student.present}}</td>
                 <!-- <td>
                     <a href="ed/{{i.id}}">edit</a>
                 </td> -->
             </tr>
             {% endfor %}
         </table>
-
+        <div class="flex justify-center items-center">
+          <button id="setPresentButton" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition duration-500 ease-in-out">
+            Set Present
+          </button>
+          
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+          <script>
+          $('#setPresentButton').click(function() {
+            $.ajax({
+              url: '/set_present/',
+              type: 'POST',
+              data: { 'studentId': students[0].id },
+              success: function(response) {
+                alert('Present status updated successfully');
+              },
+              error: function(error) {
+                alert('An error occurred');
+              }
+            });
+          });
+          </script>
+        </div>
       <!-- Add your JavaScript links here -->
   </body >
 </html>

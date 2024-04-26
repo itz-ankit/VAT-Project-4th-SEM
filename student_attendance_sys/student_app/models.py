@@ -13,6 +13,7 @@ class Student(models.Model):
     emailId = models.EmailField(max_length=100)
     collegeId = models.CharField(max_length=20)
     password = models.CharField(max_length=100)
+    present = models.CharField(max_length=20)
 
 
 

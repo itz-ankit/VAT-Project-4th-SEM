@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 from .models import *
 from django.urls import reverse
 from .forms import StudentForm
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -29,6 +31,17 @@ def home(request):
 def user_signup(request):
     return render(request, 'student.html')
 
+@csrf_exempt
+def set_present(request):
+    if request.method == 'POST':
+        student_id = request.POST.get('studentId')
+        student = Student.objects.get(id=student_id)
+        student.present = True
+        student.save()
+        return JsonResponse({'status': 'success'})
+    else:
+        return JsonResponse({'status': 'failed'})
+
 
 def student_signup(request):
     # extracting form data from the request
@@ -39,17 +52,27 @@ def student_signup(request):
     emailId = request.POST.get('emailId')
     collegeId = request.POST.get('collegeId')
     password = request.POST.get('password')
+    present = 'no'
 
-    student = Student.objects.create(
-        studentName=studentName,
-        department=department,
-        section=section,
-        rollNo=rollNo,
-        emailId=emailId,
+
+    # try to get a student with the given collegeId
+    student, created = Student.objects.get_or_create(
         collegeId=collegeId,
-        password=password,
+        defaults={
+            'studentName': studentName,
+            'department': department,
+            'section': section,
+            'rollNo': rollNo,
+            'emailId': emailId,
+            'password': password,
+            'present': present
+        }
     )
-    return redirect('../studentLogin')
+
+    if created:
+        return redirect('../studentLogin')
+    else:
+        return HttpResponse('A student with this collegeId already exists.')
 
 
 def student_login(request):
@@ -62,8 +85,8 @@ def student_log(request):
     b = request.POST.get('password')
 
     if Student.objects.filter(collegeId=a, password=b):
-        u = Student_admin.objects.all()
-        return render(request, 'studentDashboard.html', {'x': u})
+        u = Student.objects.filter(collegeId=a, password=b)
+        return render(request, 'studentDashboard.html', {'students': u})
 
     else:
         return redirect('../studentLogin')
@@ -124,14 +147,14 @@ def faculty_reg(request):
         user.save()
         messages.info(request, 'Account created sucessfully')
 
-        return redirect('../faculty-register')
+        return redirect('../facultylogpage')
 
     return redirect('../faculty-register')
 
 
 def index(request):
     return render(request, 'index.html', {
-        'students': Student_admin.objects.all()
+        'students': Student.objects.all()
     })
 
 
@@ -143,20 +166,24 @@ def add(request):
     if request.method == 'POST':
         form = StudentForm(request.POST)
         if form.is_valid():
-            new_student_number = form.cleaned_data['student_number']
-            new_first_name = form.cleaned_data['first_name']
-            new_last_name = form.cleaned_data['last_name']
-            new_email = form.cleaned_data['email']
-            new_field_of_study = form.cleaned_data['field_of_study']
-            new_gpa = form.cleaned_data['gpa']
+            new_studentName = form.cleaned_data['studentName']
+            new_department = form.cleaned_data['department']
+            new_section = form.cleaned_data['section']
+            new_rollNo = form.cleaned_data['rollNo']
+            new_emailId = form.cleaned_data['emailId']
+            new_collegeId = form.cleaned_data['collegeId']
+            new_password = form.cleaned_data['password']
+            new_present = form.cleaned_data['present']
 
-            new_student = Student_admin(
-                student_number=new_student_number,
-                first_name=new_first_name,
-                last_name=new_last_name,
-                email=new_email,
-                field_of_study=new_field_of_study,
-                gpa=new_gpa
+            new_student = Student(
+                studentName=new_studentName,
+                department=new_department,
+                section=new_section,
+                rollNo=new_rollNo,
+                emailId=new_emailId,
+                collegeId=new_collegeId,
+                password=new_password,
+                present=new_present
             )
             new_student.save()
             return render(request, 'add.html', {
@@ -172,7 +199,7 @@ def add(request):
 
 def edit(request, id):
     if request.method == 'POST':
-        student = Student_admin.objects.get(pk=id)
+        student = Student.objects.get(pk=id)
         form = StudentForm(request.POST, instance=student)
         if form.is_valid():
             form.save()
@@ -181,7 +208,7 @@ def edit(request, id):
                 'success': True
             })
     else:
-        student = Student_admin.objects.get(pk=id)
+        student = Student.objects.get(pk=id)
         form = StudentForm(instance=student)
     return render(request, 'edit.html', {
         'form': form
@@ -190,6 +217,6 @@ def edit(request, id):
 
 def delete(request, id):
     if request.method == 'POST':
-        student = Student_admin.objects.get(pk=id)
+        student = Student.objects.get(pk=id)
         student.delete()
     return HttpResponseRedirect(reverse('index'))
