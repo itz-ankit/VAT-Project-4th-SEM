@@ -1,4 +1,4 @@
-from django.urls import path  # type: ignore
+from django.urls import path, include  # type: ignore
 from . import views
 urlpatterns = [
     path('', views.home , name='home-page'),
@@ -14,7 +14,7 @@ urlpatterns = [
     path('faculty-register', views.faculty_register),
     path('faculty-reg', views.faculty_reg),
     # path('admin-dashboard', views.admin_dashboard ),
-
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin-dashboard', views.index, name='index'),
     path('<int:id>', views.view_student, name='view_student'),
     path('add', views.add, name='add'),
