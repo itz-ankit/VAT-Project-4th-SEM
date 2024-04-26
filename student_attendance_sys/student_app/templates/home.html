@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
+    />
+
+</head>
+<body class="bg-gray-900 content-center">
+
+    <div class="relative flex min-h-screen justify-center overflow-hidden bg-gray-50 py-6 sm:py-12 border-solid rounded-md content-center">
+
+        <div class="flex bg-green-400 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%  h-80 w-2/3 justify-evenly border-solid rounded-2xl">
+
+            <div class=" content-center">
+                <form method="post" action="studentLogin">
+                    {% csrf_token %}
+                    <button type="submit" onclick="toggleDashboard()"
+                    class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                        Student Login
+                    </button>
+                </form>
+                <form method="get" action="signup">
+                    <button type="submit" onclick="toggleDashboard()"
+                    class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500" >
+                        Student SignUp
+                    </button>
+                </form>
+            </div>
+        
+            <div class="  content-center">
+                <form method="post" action="facultylogpage">
+                    {% csrf_token %}
+                    <button type="submit" onclick="toggleDashboard()"
+                    class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                        Faculty Login
+                    </button>
+                </form>
+                
+                <form method="get" action="faculty-register">
+                    <button type="submit" onclick="toggleDashboard()"
+                    class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Faculty Register</button>
+                </form>
+            </div>
+
+        </div>
+            
+
+    </div>
+
+
+
+
+
+    
+</body>
+</html>

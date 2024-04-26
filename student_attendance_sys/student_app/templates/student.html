@@ -3,40 +3,131 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Student Dashboard</title>
+    <title>Student Registration</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    rel="stylesheet"
     />
   </head>
+
   <body class="bg-gray-100">
     <!-- Student Dashboard -->
-    <div id="studentDashboard" class="p-10">
-      <h1 class="text-center text-3xl mb-4">Student Dashboard</h1>
-      <div class="mb-4">
-        <label for="studentName" class="block text-sm font-medium text-gray-700"
-          >Student Name</label
+
+    <div id="studentRegistration" class="p-10">
+      <h1 class="text-center text-3xl mb-4">Student Registration</h1>
+      
+      <form method="post" action="studentSignup">
+        {% csrf_token %}
+        <!-- Student Name -->
+        <div class="mb-4">
+          <label 
+          for="studentName" 
+          class="block text-sm font-medium text-gray-700"
+            >Student Name</label
+          >
+          <input
+            type="text"
+            id="studentName"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Enter your name"
+            name="studentName"
+          />
+        </div>
+
+        <!-- dept, section , roll no  -->
+        <div class="mb-4 w-full inline-flex justify-between">
+          <label for="departmentName" class="block text-sm font-medium text-gray-700"
+            >Department</label
+          >
+          <input
+            type="text"
+            id="department"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Enter your name"
+            name = department
+          />
+          <label for="studentName" class="block text-sm font-medium text-gray-700"
+          >Section</label
+          >
+          <input
+            type="text"
+            id="section"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Enter your name"
+            name="section"
+          />
+
+          <label for="studentName" class="block text-sm font-medium text-gray-700"
+          >RollNo</label
+          >
+          <input
+            type="text"
+            id="rollNo"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Enter your name"
+            name="rollNo"
+          />
+        </div>
+
+
+        <!-- Email Id & college Provided unique id -->
+        <div class="mb-4">
+          <label for="studentName" class="block text-sm font-medium text-gray-700"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="emailId"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Enter your name"
+            name="emailId"
+          />
+
+          <label for="collegeId" class="block text-sm font-medium text-gray-700"
+          >College-ID</label
+          >
+          <input
+            type="text"
+            id="collegeId"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Enter your name"
+            name="collegeId"
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="mb-4">
+          <label for="studentName" class="block text-sm font-medium text-gray-700"
+            >Password</label
+          >
+          <input
+            type="password"
+            id="password"
+            class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            placeholder="Enter your Password"
+            name="password"
+          />
+        </div>
+
+      
+        <button
+          type="submit"
+          onclick="markAttendance('Present')"
+          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
-        <input
-          type="text"
-          id="studentName"
-          class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          placeholder="Enter your name"
-        />
-      </div>
-      <button
-        onclick="markAttendance('Present')"
-        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
-        Mark Attendance
-      </button>
-      <button
-        onclick="toggleDashboard()"
-        class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-      >
-        Switch to Admin Dashboard
-      </button>
+          Register
+        </button>
+      </form>
     </div>
+
+    <button
+    onclick="toggleDashboard()"
+    class="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+    >
+    Switch to Admin Dashboard
+    </button>
+
+
     <!-- Add your JavaScript links here -->
   </body>
 </html>
