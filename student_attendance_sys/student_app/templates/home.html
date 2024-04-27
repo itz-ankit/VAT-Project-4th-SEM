@@ -6,50 +6,55 @@
     <title>Student Database Management System</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
   </head>
   <body class="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-500">
-    <div class="flex min-h-screen justify-center items-center">
+    <div class="flex flex-col min-h-screen justify-center items-center">
+      {% load static %}
+      <div>
+        <img src="{% static 'images/graduation_hat.png' %}" alt="image" />
+      </div>
       <div
         class="bg-gradient-to-r from-white to-sky-500 rounded-2xl p-8"
-        style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px)"
-      >
+        style="
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(5px);
+        ">
         <div class="text-center mb-8">
-            <h1 class="text-3xl text-white uppercase font-serif shadow-lg">
-                Student Database Management System
-              </h1>
+          <h1 class="text-3xl text-white uppercase font-serif shadow-lg">
+            Student Database Management System
+          </h1>
         </div>
         <div class="flex justify-between">
-            <div>
-              <a href="studentLogin"
-                class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-              >
-                Student Login
-              </a>
-            </div>
-            <div>
-              <a href="signup"
-                class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-              >
-                Student SignUp
-              </a>
-            </div>
-            <div>
-              <a href="facultylogpage"
-                class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-              >
-                Faculty Login
-              </a>
-            </div>
-            <div>
-              <a href="faculty-register"
-                class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-              >
-                Faculty Register
-              </a>
-            </div>
+          <div>
+            <a
+              href="studentLogin"
+              class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+              Student Login
+            </a>
           </div>
+          <div>
+            <a
+              href="signup"
+              class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+              Student SignUp
+            </a>
+          </div>
+          <div>
+            <a
+              href="facultylogpage"
+              class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+              Faculty Login
+            </a>
+          </div>
+          <div>
+            <a
+              href="faculty-register"
+              class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+              Faculty Register
+            </a>
+          </div>
+        </div>
         <div class="text-center mt-8">
           <a
             href="/admin"
