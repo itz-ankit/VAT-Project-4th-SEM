@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from pyclbr import Class
 from pyexpat import model
 from django.db import models
@@ -6,8 +7,8 @@ from django.db import models
 
 
 class Student(models.Model):
-    studentName = models.CharField(max_length = 50 )
-    department = models.TextField(max_length= 50)
+    studentName = models.CharField(max_length=50)
+    department = models.TextField(max_length=50)
     section = models.CharField(max_length=50)
     rollNo = models.CharField(max_length=20)
     emailId = models.EmailField(max_length=100)
@@ -17,15 +18,13 @@ class Student(models.Model):
     date = models.DateField(null=True, blank=True)
 
 
-
-
 class Student_admin(models.Model):
-  student_number = models.PositiveIntegerField()
-  first_name = models.CharField(max_length=50)
-  last_name = models.CharField(max_length=50)
-  email = models.EmailField(max_length=100)
-  field_of_study = models.CharField(max_length=50)
-  gpa = models.FloatField()
+    student_number = models.PositiveIntegerField()
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100)
+    field_of_study = models.CharField(max_length=50)
+    gpa = models.FloatField()
 
-  def __str__(self):
-    return f'Student_admin: {self.first_name} {self.last_name}'  
+    def __str__(self):
+        return f'Student_admin: {self.first_name} {self.last_name}'
