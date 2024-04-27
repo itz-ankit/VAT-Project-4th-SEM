@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Registration</title>
     <link
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-    rel="stylesheet"
-    />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet" />
   </head>
 
   <body class="bg-gray-100">
@@ -15,14 +17,14 @@
 
     <div id="studentRegistration" class="p-10">
       <h1 class="text-center text-3xl mb-4">Student Registration</h1>
-      
+
       <form method="post" action="studentSignup">
         {% csrf_token %}
         <!-- Student Name -->
         <div class="mb-4">
-          <label 
-          for="studentName" 
-          class="block text-sm font-medium text-gray-700"
+          <label
+            for="studentName"
+            class="block text-sm font-medium text-gray-700"
             >Student Name</label
           >
           <input
@@ -30,13 +32,14 @@
             id="studentName"
             class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Enter your name"
-            name="studentName"
-          />
+            name="studentName" />
         </div>
 
         <!-- dept, section , roll no  -->
-        <div class="mb-4 w-full inline-flex justify-between">
-          <label for="departmentName" class="block text-sm font-medium text-gray-700"
+        <div class="mb-4 w-full inline-flex gap-3 justify-between items-center">
+          <label
+            for="departmentName"
+            class="block text-sm font-medium text-gray-700"
             >Department</label
           >
           <input
@@ -44,35 +47,37 @@
             id="department"
             class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Enter your name"
-            name = department
-          />
-          <label for="studentName" class="block text-sm font-medium text-gray-700"
-          >Section</label
+            name="department" />
+          <label
+            for="studentName"
+            class="block text-sm font-medium text-gray-700"
+            >Section</label
           >
           <input
             type="text"
             id="section"
             class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Enter your name"
-            name="section"
-          />
+            name="section" />
 
-          <label for="studentName" class="block text-sm font-medium text-gray-700"
-          >RollNo</label
+          <label
+            for="studentName"
+            class="block text-sm font-medium text-gray-700"
+            >RollNo</label
           >
           <input
             type="text"
             id="rollNo"
             class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Enter your name"
-            name="rollNo"
-          />
+            name="rollNo" />
         </div>
-
 
         <!-- Email Id & college Provided unique id -->
         <div class="mb-4">
-          <label for="studentName" class="block text-sm font-medium text-gray-700"
+          <label
+            for="studentName"
+            class="block text-sm font-medium text-gray-700"
             >Email</label
           >
           <input
@@ -80,24 +85,24 @@
             id="emailId"
             class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Enter your name"
-            name="emailId"
-          />
+            name="emailId" />
 
           <label for="collegeId" class="block text-sm font-medium text-gray-700"
-          >College-ID</label
+            >College-ID</label
           >
           <input
             type="text"
             id="collegeId"
             class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Enter your name"
-            name="collegeId"
-          />
+            name="collegeId" />
         </div>
 
         <!-- Password -->
         <div class="mb-4">
-          <label for="studentName" class="block text-sm font-medium text-gray-700"
+          <label
+            for="studentName"
+            class="block text-sm font-medium text-gray-700"
             >Password</label
           >
           <input
@@ -105,16 +110,13 @@
             id="password"
             class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             placeholder="Enter your Password"
-            name="password"
-          />
+            name="password" />
         </div>
 
-      
         <button
           type="submit"
           onclick="markAttendance('Present')"
-          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        >
+          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           Register
         </button>
       </form>
@@ -126,7 +128,6 @@
     >
     Switch to Admin Dashboard
     </button> -->
-
 
     <!-- Add your JavaScript links here -->
   </body>
