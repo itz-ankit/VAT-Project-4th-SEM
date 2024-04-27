@@ -21,45 +21,35 @@
               </h1>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <form method="post" action="studentLogin">
-            {% csrf_token %}
-            <button
-              type="submit"
-              onclick="toggleDashboard()"
-              class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-            >
-              Student Login
-            </button>
-          </form>
-          <form method="get" action="signup">
-            <button
-              type="submit"
-              onclick="toggleDashboard()"
-              class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-            >
-              Student SignUp
-            </button>
-          </form>
-          <form method="post" action="facultylogpage">
-            {% csrf_token %}
-            <button
-              type="submit"
-              onclick="toggleDashboard()"
-              class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-            >
-              Faculty Login
-            </button>
-          </form>
-          <form method="get" action="faculty-register">
-            <button
-              type="submit"
-              onclick="toggleDashboard()"
-              class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
-            >
-              Faculty Register
-            </button>
-          </form>
-        </div>
+            <div>
+              <a href="studentLogin"
+                class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              >
+                Student Login
+              </a>
+            </div>
+            <div>
+              <a href="signup"
+                class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              >
+                Student SignUp
+              </a>
+            </div>
+            <div>
+              <a href="facultylogpage"
+                class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              >
+                Faculty Login
+              </a>
+            </div>
+            <div>
+              <a href="faculty-register"
+                class="w-36 m-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+              >
+                Faculty Register
+              </a>
+            </div>
+          </div>
         <div class="text-center mt-8">
           <a
             href="/admin"
