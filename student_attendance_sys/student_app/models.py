@@ -14,6 +14,7 @@ class Student(models.Model):
     collegeId = models.CharField(max_length=20)
     password = models.CharField(max_length=100)
     present = models.CharField(max_length=20)
+    date = models.DateField(null=True, blank=True)
 
 
 

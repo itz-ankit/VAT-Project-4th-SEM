@@ -14,11 +14,12 @@ urlpatterns = [
     path('faculty-register', views.faculty_register),
     path('faculty-reg', views.faculty_reg),
     # path('admin-dashboard', views.admin_dashboard ),
-    path('accounts/', include('django.contrib.auth.urls')),
+    # path('accounts/', include('django.contrib.auth.urls')),
     path('admin-dashboard', views.index, name='index'),
     path('<int:id>', views.view_student, name='view_student'),
     path('add', views.add, name='add'),
     path('edit/<int:id>', views.edit, name='edit'),
     path('delete/<int:id>', views.delete, name='delete'),
-    path('set_present/', views.set_present, name='set_present')
+    path('set_present/', views.set_present, name='set_present'),
+    path('logout/', views.logout_view, name='logout'),
 ]

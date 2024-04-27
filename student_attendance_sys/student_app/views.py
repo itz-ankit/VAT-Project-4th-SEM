@@ -1,11 +1,13 @@
 import re
+from datetime import datetime, date
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from student_app.models import *
 import os
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import *
 from django.urls import reverse
@@ -36,8 +38,11 @@ def user_signup(request):
 def set_present(request):
     if request.method == 'POST':
         student_id = request.POST.get('studentId')
+        date_string = request.POST.get('date')
+        date = datetime.strptime(date_string, '%Y-%m-%d').date()
         student = Student.objects.get(id=student_id)
         student.present = 'yes'
+        student.date = date
         student.save()
         return JsonResponse({'status': 'success'})
     else:
@@ -78,6 +83,9 @@ def student_signup(request):
 def student_login(request):
     return render(request, 'studentLogin.html')
 
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect('/')
 
 def student_log(request):
 
@@ -173,7 +181,8 @@ def add(request):
             new_emailId = form.cleaned_data['emailId']
             new_collegeId = form.cleaned_data['collegeId']
             new_password = form.cleaned_data['password']
-            new_present = form.cleaned_data['present']
+            new_present = "no"
+            new_date = date.today()
 
             new_student = Student(
                 studentName=new_studentName,
@@ -183,7 +192,8 @@ def add(request):
                 emailId=new_emailId,
                 collegeId=new_collegeId,
                 password=new_password,
-                present=new_present
+                present=new_present,
+                date=new_date
             )
             new_student.save()
             return render(request, 'add.html', {

@@ -15,6 +15,12 @@
             <i class="fa-solid fa-pen-to-square fa-lg"></i> Update Student Records
           </div>
           <div class="card-body">
+            {% comment %} <p>Student Name: {{ student.studentName }}</p>
+            <p>College ID: {{ student.collegeId }}</p>
+            <p>Section: {{ student.section }}</p>
+            <p>Roll Number: {{ student.rollNo }}</p>
+            <p>Email: {{ student.emailId }}</p>
+            <p>Field of Study: {{ student.department }}</p> {% endcomment %}
             <form action="" method="POST">
               {% csrf_token %}
               {{ form.as_p }}
