@@ -46,7 +46,7 @@ The Student Management System is developed to simplify the process of managing s
    ```
 4. Run the application:
    ```sh
-   python app.py
+   python manage.py
    ```
 
 ## Usage
